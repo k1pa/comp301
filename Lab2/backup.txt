@@ -1,0 +1,51 @@
+void traverse(){
+	temp = first;
+	while(!temp){
+		printf("the id is %d, quan is %d, tickets = %d \n", temp->process_ID, temp->quanta, temp->num_tickets);
+		temp = first->next;
+	}
+}
+
+//insert a node n into the linked list
+void insert(node* n){
+ if(first){
+	 last->next = n;
+	 last = n->next;
+ }
+ else{
+	 first = n;
+	 last = first->next;
+ }
+}
+
+//find a node & set correct pointers
+node* find(int id){
+	ptr = first;
+	if(!first){
+		return NULL;
+	}
+	else{
+		while(ptr->process_ID != id){
+			prev = ptr;
+			ptr = ptr->next;
+			
+			if(!ptr) return NULL;
+		}
+		return ptr;
+	}
+}
+
+//delete a node and remove correct pointers
+node* delete(int id){
+	find(id);
+	if(!ptr){
+		return NULL;
+	}
+	else{
+		if(!prev) first = first->next;
+		else{
+			prev->next = ptr->next;
+		}
+		return ptr;
+	}
+}
